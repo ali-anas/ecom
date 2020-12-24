@@ -20,6 +20,7 @@ from django.urls import path,include
 from django.conf.urls.static import static
 
 from django.contrib.admin import AdminSite
+from ecom_home.api import urls
 # from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from django.utils.translation import ugettext_lazy
@@ -35,7 +36,8 @@ AdminSite.index_title = ugettext_lazy('DATA BASE ADMINISTRATION')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('',include('ecom_home.urls',namespace='ecom_home'))
+    path('',include('ecom_home.urls',namespace='ecom_home')),
+    path('api/item/',include('ecom_home.api.urls',namespace='item_api')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL,
